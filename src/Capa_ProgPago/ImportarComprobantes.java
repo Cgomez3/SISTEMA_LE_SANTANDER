@@ -526,20 +526,19 @@ public class ImportarComprobantes extends javax.swing.JInternalFrame {
 
                 System.out.println("cuenta bancaria " + listaCuentaBancaria.size());
                 if (listaCuentaBancaria.size() > 0) {
-                    proveedoressincuenta = "";
-                    proveedoressincuenta += "<html><body width='500'><div style=\"width:500px; height:115px; overflow: scroll;\"><h4>Los siguientes comprobantes se encuentran Pendientes de Programar ó Programados: </h4>";
-
-                    for (int i = 0; i < listaCuentaBancaria.size(); i++) {
-                        proveedoressincuenta += "<p>- " + listaCuentaBancaria.get(i).getmoneda() + ". " + listaCuentaBancaria.get(i).getnomProveedor() + ". RUC: " + listaCuentaBancaria.get(i).getDocProveedor() + ".<br>";
-
-                    }
-                    proveedoressincuenta += "</p></div></body></html>";
-                    
+//                    proveedoressincuenta = "";
+//                    proveedoressincuenta += "<html><body width='500'><div style=\"width:500px; height:115px; overflow: scroll;\"><h4>Los siguientes comprobantes se encuentran Pendientes de Programar ó Programados: </h4>";
+//
+//                    for (int i = 0; i < listaCuentaBancaria.size(); i++) {
+//                        proveedoressincuenta += "<p>- " + listaCuentaBancaria.get(i).getmoneda() + ". " + listaCuentaBancaria.get(i).getnomProveedor() + ". RUC: " + listaCuentaBancaria.get(i).getDocProveedor() + ".<br>";
+//
+//                    }
+//                    proveedoressincuenta += "</p></div></body></html>";
+//                    
                     proveedoressincuenta = "";
                     
                     for (int i = 0; i < listaCuentaBancaria.size(); i++) {
                         proveedoressincuenta +=" - " + listaCuentaBancaria.get(i).getmoneda() + ". " + listaCuentaBancaria.get(i).getnomProveedor() + ". RUC: " + listaCuentaBancaria.get(i).getDocProveedor() + " \n";
-
                     }
                     
                     JTextArea jta = new JTextArea(proveedoressincuenta);
