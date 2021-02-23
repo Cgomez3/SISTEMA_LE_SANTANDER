@@ -31,7 +31,7 @@ public class Menu_PrincipalPrg extends javax.swing.JFrame {
 //        Reloj hilo = new Reloj(txthora);
 //        hilo.start();
 //         txtfecha.setText(fecha());
-        txtfecha.setText("Fecha de Compilación: 22/02/2021");
+        txtfecha.setText("Fecha de Compilación: 23/02/2021");
         txtConexion.setText("Sin Conexión");
         ConexionBD con = new ConexionBD("");
         con.leer_ini();
