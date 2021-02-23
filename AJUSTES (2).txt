@@ -1,0 +1,1 @@
+Poner para ingresar Lote(3), Chequera(20), Correlativo(numeric) para exportacion a GP.

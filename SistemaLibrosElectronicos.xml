@@ -1,0 +1,22 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\EXPERTYA\Desktop\SISTEMA_LE_SANTANDER\dist\SISTEMA_LE_SANTANDER.jar</jar>
+  <outfile>C:\Users\EXPERTYA\Desktop\SISTEMA_LE_SANTANDER\dist\Sistema Santander GContabilidad.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>C:\Users\EXPERTYA\Desktop\SISTEMA_LE_SANTANDER\dist\santander_ico.ico</icon>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <minVersion>0.0.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+  </jre>
+</launch4jConfig>

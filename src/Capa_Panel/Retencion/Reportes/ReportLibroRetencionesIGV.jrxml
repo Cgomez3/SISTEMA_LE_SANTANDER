@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Mes" class="java.lang.Integer"/>
+	<parameter name="Año" class="java.lang.Integer"/>
+	<parameter name="Periodo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select convert(varchar(15),dr.FechaPago,105) as Fec,(case SUBSTRING(dr.Ruc,1,2) when '20' then '6' else '6' end) as codigo,
+dr.Ruc, dr.RazonSocial , SUM(dr.Importe) as ImpBruto, 
+(case dr.TipoMoneda when 'S/.' then(SUM(ROUND(Sunat,1))) else (SUM(ROUND((Sunat*dr.TipoCambio),1))) end)
+ as Retencion, (SUM(Importe)-SUM(ROUND(Sunat,1))) as Neto,
+substring(nr.NroComprobReten,1,4) as Serie, substring(nr.NroComprobReten,6,7) as NroComprobante, dr.TipoMoneda, dr.TipoCambio
+from DataRetencionDetalle as dr, NroComprobanteRetencion as nr where dr.Correlativo=nr.Correlativo and
+MONTH(FechaPago)=$P{Mes} and YEAR(FechaPago)=$P{Año}
+group by nr.NroComprobReten, dr.Ruc, dr.RazonSocial, dr.codigo, dr.FechaPago, dr.TipoMoneda, dr.TipoCambio]]>
+	</queryString>
+	<field name="Fec" class="java.lang.String"/>
+	<field name="Ruc" class="java.lang.String"/>
+	<field name="RazonSocial" class="java.lang.String"/>
+	<field name="ImpBruto" class="java.lang.Double"/>
+	<field name="Retencion" class="java.lang.Double"/>
+	<field name="Neto" class="java.lang.Double"/>
+	<field name="Serie" class="java.lang.String"/>
+	<field name="NroComprobante" class="java.lang.String"/>
+	<variable name="ImpBruto_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{ImpBruto}]]></variableExpression>
+	</variable>
+	<variable name="Retencion_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Retencion}]]></variableExpression>
+	</variable>
+	<variable name="Neto_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Neto}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="41" width="62" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERÍODO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="55" width="62" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="69" width="284" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APELLIDOS Y NOMBRES, DENOMINACIÓN O RAZÓN SOCIAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="69" width="284" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SANTANDER CONSUMO PERU SAC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="55" width="159" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[20550226589]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="81" y="41" width="159" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="19" y="25" width="453" height="16"/>
+				<textElement>
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LIBRO DE RETENCIONES DE IGV]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="11" width="94" height="25"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="22" y="20" width="72" height="16"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="94" y="11" width="89" height="25"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="107" y="20" width="62" height="16"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="183" y="11" width="55" height="25"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="188" y="20" width="48" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERIE N°]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="238" y="11" width="110" height="25"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="250" y="20" width="90" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° COMPROBANTE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="584" y="11" width="73" height="25"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="600" y="20" width="57" height="16"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="657" y="11" width="73" height="25"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="673" y="20" width="57" height="16"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RET. IGV]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="730" y="11" width="72" height="25"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="745" y="20" width="57" height="16"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMP. NETO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="348" y="11" width="236" height="25"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="413" y="20" width="90" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROVEEDOR]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="22" y="0" width="72" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Fec}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="107" y="0" width="76" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Ruc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="211" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RazonSocial}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###, ##0.00">
+				<reportElement x="584" y="0" width="65" height="14"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{ImpBruto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###, ##0.00">
+				<reportElement x="657" y="0" width="65" height="14"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{Retencion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###, ##0.00">
+				<reportElement x="730" y="0" width="67" height="14"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{Neto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="0" width="49" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Serie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="100" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NroComprobante}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="###, ##0.00">
+				<reportElement x="584" y="0" width="65" height="14"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{ImpBruto_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###, ##0.00">
+				<reportElement x="657" y="0" width="65" height="14"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{Retencion_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###, ##0.00">
+				<reportElement x="730" y="0" width="67" height="14"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{Neto_1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="11" y="0" width="791" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="527" y="1" width="57" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

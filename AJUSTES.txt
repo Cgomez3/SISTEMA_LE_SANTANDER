@@ -1,0 +1,2 @@
+- Agregar fecha de contabilizacion en Prg_Comprobante al importar grabar esa fecha, cuando se grabe manualmente la fecha de contabilizacion del dia.
+- Cambiar la consultas para la programacion se hacen sobre la fecha de contabilizacion.

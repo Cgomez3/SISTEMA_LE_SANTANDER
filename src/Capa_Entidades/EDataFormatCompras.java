@@ -1,0 +1,657 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Capa_Entidades;
+
+/**
+ *
+ * @author EXPERTYA
+ */
+public class EDataFormatCompras {
+    private int Codigo;
+    private String Campo1;
+    private String Campo2;
+    private String Campo3;
+    private String Campo4;
+    private String Campo5;
+    private String Campo6;
+    private String Campo7;
+    private String Campo8;
+    private String Campo9;
+    private String Campo10;
+    private String Campo11;
+    private String Campo12;
+    private String Campo13;
+    private String Campo14;
+    private String Campo15;
+    private String Campo16;
+    private String Campo17;
+    private String Campo18;
+    private String Campo19;
+    private String Campo20;
+    private String Campo21;
+    private String Campo22;
+    private String Campo23;
+    private String Campo24;
+    private String Campo25;
+    private String Campo26;
+    private String Campo27;
+    private String Campo28;
+    private String Campo29;
+    private String Campo30;
+    private String Campo31;
+    private String Campo32;
+    private String Campo33;
+    private String Campo34;
+    private String Campo35;
+    private String Campo36;
+    private String Campo37;
+    private String Campo38;
+    private String Campo39;
+    private String Campo40;
+    private String Campo41;
+    private String CampoOtros;
+
+    /**
+     * @return the Codigo
+     */
+    public int getCodigo() {
+        return Codigo;
+    }
+
+    /**
+     * @param Codigo the Codigo to set
+     */
+    public void setCodigo(int Codigo) {
+        this.Codigo = Codigo;
+    }
+
+    /**
+     * @return the Campo1
+     */
+    public String getCampo1() {
+        return Campo1;
+    }
+
+    /**
+     * @param Campo1 the Campo1 to set
+     */
+    public void setCampo1(String Campo1) {
+        this.Campo1 = Campo1;
+    }
+
+    /**
+     * @return the Campo2
+     */
+    public String getCampo2() {
+        return Campo2;
+    }
+
+    /**
+     * @param Campo2 the Campo2 to set
+     */
+    public void setCampo2(String Campo2) {
+        this.Campo2 = Campo2;
+    }
+
+    /**
+     * @return the Campo3
+     */
+    public String getCampo3() {
+        return Campo3;
+    }
+
+    /**
+     * @param Campo3 the Campo3 to set
+     */
+    public void setCampo3(String Campo3) {
+        this.Campo3 = Campo3;
+    }
+
+    /**
+     * @return the Campo4
+     */
+    public String getCampo4() {
+        return Campo4;
+    }
+
+    /**
+     * @param Campo4 the Campo4 to set
+     */
+    public void setCampo4(String Campo4) {
+        this.Campo4 = Campo4;
+    }
+
+    /**
+     * @return the Campo5
+     */
+    public String getCampo5() {
+        return Campo5;
+    }
+
+    /**
+     * @param Campo5 the Campo5 to set
+     */
+    public void setCampo5(String Campo5) {
+        this.Campo5 = Campo5;
+    }
+
+    /**
+     * @return the Campo6
+     */
+    public String getCampo6() {
+        return Campo6;
+    }
+
+    /**
+     * @param Campo6 the Campo6 to set
+     */
+    public void setCampo6(String Campo6) {
+        this.Campo6 = Campo6;
+    }
+
+    /**
+     * @return the Campo7
+     */
+    public String getCampo7() {
+        return Campo7;
+    }
+
+    /**
+     * @param Campo7 the Campo7 to set
+     */
+    public void setCampo7(String Campo7) {
+        this.Campo7 = Campo7;
+    }
+
+    /**
+     * @return the Campo8
+     */
+    public String getCampo8() {
+        return Campo8;
+    }
+
+    /**
+     * @param Campo8 the Campo8 to set
+     */
+    public void setCampo8(String Campo8) {
+        this.Campo8 = Campo8;
+    }
+
+    /**
+     * @return the Campo9
+     */
+    public String getCampo9() {
+        return Campo9;
+    }
+
+    /**
+     * @param Campo9 the Campo9 to set
+     */
+    public void setCampo9(String Campo9) {
+        this.Campo9 = Campo9;
+    }
+
+    /**
+     * @return the Campo10
+     */
+    public String getCampo10() {
+        return Campo10;
+    }
+
+    /**
+     * @param Campo10 the Campo10 to set
+     */
+    public void setCampo10(String Campo10) {
+        this.Campo10 = Campo10;
+    }
+
+    /**
+     * @return the Campo11
+     */
+    public String getCampo11() {
+        return Campo11;
+    }
+
+    /**
+     * @param Campo11 the Campo11 to set
+     */
+    public void setCampo11(String Campo11) {
+        this.Campo11 = Campo11;
+    }
+
+    /**
+     * @return the Campo12
+     */
+    public String getCampo12() {
+        return Campo12;
+    }
+
+    /**
+     * @param Campo12 the Campo12 to set
+     */
+    public void setCampo12(String Campo12) {
+        this.Campo12 = Campo12;
+    }
+
+    /**
+     * @return the Campo13
+     */
+    public String getCampo13() {
+        return Campo13;
+    }
+
+    /**
+     * @param Campo13 the Campo13 to set
+     */
+    public void setCampo13(String Campo13) {
+        this.Campo13 = Campo13;
+    }
+
+    /**
+     * @return the Campo14
+     */
+    public String getCampo14() {
+        return Campo14;
+    }
+
+    /**
+     * @param Campo14 the Campo14 to set
+     */
+    public void setCampo14(String Campo14) {
+        this.Campo14 = Campo14;
+    }
+
+    /**
+     * @return the Campo15
+     */
+    public String getCampo15() {
+        return Campo15;
+    }
+
+    /**
+     * @param Campo15 the Campo15 to set
+     */
+    public void setCampo15(String Campo15) {
+        this.Campo15 = Campo15;
+    }
+
+    /**
+     * @return the Campo16
+     */
+    public String getCampo16() {
+        return Campo16;
+    }
+
+    /**
+     * @param Campo16 the Campo16 to set
+     */
+    public void setCampo16(String Campo16) {
+        this.Campo16 = Campo16;
+    }
+
+    /**
+     * @return the Campo17
+     */
+    public String getCampo17() {
+        return Campo17;
+    }
+
+    /**
+     * @param Campo17 the Campo17 to set
+     */
+    public void setCampo17(String Campo17) {
+        this.Campo17 = Campo17;
+    }
+
+    /**
+     * @return the Campo18
+     */
+    public String getCampo18() {
+        return Campo18;
+    }
+
+    /**
+     * @param Campo18 the Campo18 to set
+     */
+    public void setCampo18(String Campo18) {
+        this.Campo18 = Campo18;
+    }
+
+    /**
+     * @return the Campo19
+     */
+    public String getCampo19() {
+        return Campo19;
+    }
+
+    /**
+     * @param Campo19 the Campo19 to set
+     */
+    public void setCampo19(String Campo19) {
+        this.Campo19 = Campo19;
+    }
+
+    /**
+     * @return the Campo20
+     */
+    public String getCampo20() {
+        return Campo20;
+    }
+
+    /**
+     * @param Campo20 the Campo20 to set
+     */
+    public void setCampo20(String Campo20) {
+        this.Campo20 = Campo20;
+    }
+
+    /**
+     * @return the Campo21
+     */
+    public String getCampo21() {
+        return Campo21;
+    }
+
+    /**
+     * @param Campo21 the Campo21 to set
+     */
+    public void setCampo21(String Campo21) {
+        this.Campo21 = Campo21;
+    }
+
+    /**
+     * @return the Campo22
+     */
+    public String getCampo22() {
+        return Campo22;
+    }
+
+    /**
+     * @param Campo22 the Campo22 to set
+     */
+    public void setCampo22(String Campo22) {
+        this.Campo22 = Campo22;
+    }
+
+    /**
+     * @return the Campo23
+     */
+    public String getCampo23() {
+        return Campo23;
+    }
+
+    /**
+     * @param Campo23 the Campo23 to set
+     */
+    public void setCampo23(String Campo23) {
+        this.Campo23 = Campo23;
+    }
+
+    /**
+     * @return the Campo24
+     */
+    public String getCampo24() {
+        return Campo24;
+    }
+
+    /**
+     * @param Campo24 the Campo24 to set
+     */
+    public void setCampo24(String Campo24) {
+        this.Campo24 = Campo24;
+    }
+
+    /**
+     * @return the Campo25
+     */
+    public String getCampo25() {
+        return Campo25;
+    }
+
+    /**
+     * @param Campo25 the Campo25 to set
+     */
+    public void setCampo25(String Campo25) {
+        this.Campo25 = Campo25;
+    }
+
+    /**
+     * @return the Campo26
+     */
+    public String getCampo26() {
+        return Campo26;
+    }
+
+    /**
+     * @param Campo26 the Campo26 to set
+     */
+    public void setCampo26(String Campo26) {
+        this.Campo26 = Campo26;
+    }
+
+    /**
+     * @return the Campo27
+     */
+    public String getCampo27() {
+        return Campo27;
+    }
+
+    /**
+     * @param Campo27 the Campo27 to set
+     */
+    public void setCampo27(String Campo27) {
+        this.Campo27 = Campo27;
+    }
+
+    /**
+     * @return the Campo28
+     */
+    public String getCampo28() {
+        return Campo28;
+    }
+
+    /**
+     * @param Campo28 the Campo28 to set
+     */
+    public void setCampo28(String Campo28) {
+        this.Campo28 = Campo28;
+    }
+
+    /**
+     * @return the Campo29
+     */
+    public String getCampo29() {
+        return Campo29;
+    }
+
+    /**
+     * @param Campo29 the Campo29 to set
+     */
+    public void setCampo29(String Campo29) {
+        this.Campo29 = Campo29;
+    }
+
+    /**
+     * @return the Campo30
+     */
+    public String getCampo30() {
+        return Campo30;
+    }
+
+    /**
+     * @param Campo30 the Campo30 to set
+     */
+    public void setCampo30(String Campo30) {
+        this.Campo30 = Campo30;
+    }
+
+    /**
+     * @return the Campo31
+     */
+    public String getCampo31() {
+        return Campo31;
+    }
+
+    /**
+     * @param Campo31 the Campo31 to set
+     */
+    public void setCampo31(String Campo31) {
+        this.Campo31 = Campo31;
+    }
+
+    /**
+     * @return the Campo32
+     */
+    public String getCampo32() {
+        return Campo32;
+    }
+
+    /**
+     * @param Campo32 the Campo32 to set
+     */
+    public void setCampo32(String Campo32) {
+        this.Campo32 = Campo32;
+    }
+
+    /**
+     * @return the Campo33
+     */
+    public String getCampo33() {
+        return Campo33;
+    }
+
+    /**
+     * @param Campo33 the Campo33 to set
+     */
+    public void setCampo33(String Campo33) {
+        this.Campo33 = Campo33;
+    }
+
+    /**
+     * @return the Campo34
+     */
+    public String getCampo34() {
+        return Campo34;
+    }
+
+    /**
+     * @param Campo34 the Campo34 to set
+     */
+    public void setCampo34(String Campo34) {
+        this.Campo34 = Campo34;
+    }
+
+    /**
+     * @return the CampoOtros
+     */
+    public String getCampoOtros() {
+        return CampoOtros;
+    }
+
+    /**
+     * @param CampoOtros the CampoOtros to set
+     */
+    public void setCampoOtros(String CampoOtros) {
+        this.CampoOtros = CampoOtros;
+    }
+
+    /**
+     * @return the Campo35
+     */
+    public String getCampo35() {
+        return Campo35;
+    }
+
+    /**
+     * @param Campo35 the Campo35 to set
+     */
+    public void setCampo35(String Campo35) {
+        this.Campo35 = Campo35;
+    }
+
+    /**
+     * @return the Campo36
+     */
+    public String getCampo36() {
+        return Campo36;
+    }
+
+    /**
+     * @param Campo36 the Campo36 to set
+     */
+    public void setCampo36(String Campo36) {
+        this.Campo36 = Campo36;
+    }
+
+    /**
+     * @return the Campo37
+     */
+    public String getCampo37() {
+        return Campo37;
+    }
+
+    /**
+     * @param Campo37 the Campo37 to set
+     */
+    public void setCampo37(String Campo37) {
+        this.Campo37 = Campo37;
+    }
+
+    /**
+     * @return the Campo38
+     */
+    public String getCampo38() {
+        return Campo38;
+    }
+
+    /**
+     * @param Campo38 the Campo38 to set
+     */
+    public void setCampo38(String Campo38) {
+        this.Campo38 = Campo38;
+    }
+
+    /**
+     * @return the Campo39
+     */
+    public String getCampo39() {
+        return Campo39;
+    }
+
+    /**
+     * @param Campo39 the Campo39 to set
+     */
+    public void setCampo39(String Campo39) {
+        this.Campo39 = Campo39;
+    }
+
+    /**
+     * @return the Campo40
+     */
+    public String getCampo40() {
+        return Campo40;
+    }
+
+    /**
+     * @param Campo40 the Campo40 to set
+     */
+    public void setCampo40(String Campo40) {
+        this.Campo40 = Campo40;
+    }
+
+    /**
+     * @return the Campo41
+     */
+    public String getCampo41() {
+        return Campo41;
+    }
+
+    /**
+     * @param Campo41 the Campo41 to set
+     */
+    public void setCampo41(String Campo41) {
+        this.Campo41 = Campo41;
+    }
+}

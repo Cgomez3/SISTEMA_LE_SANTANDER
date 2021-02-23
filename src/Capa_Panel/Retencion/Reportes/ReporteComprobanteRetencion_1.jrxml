@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.6105100000000012"/>
+	<property name="ireport.x" value="215"/>
+	<property name="ireport.y" value="664"/>
+	<parameter name="Tipo" class="java.lang.String"/>
+	<parameter name="Serie" class="java.lang.String"/>
+	<parameter name="NDocument" class="java.lang.String"/>
+	<parameter name="FechaEmision" class="java.lang.String"/>
+	<parameter name="Importe" class="java.lang.String"/>
+	<parameter name="Retencion" class="java.lang.String"/>
+	<parameter name="Neto" class="java.lang.String"/>
+	<parameter name="Codigo" class="java.lang.Integer"/>
+	<parameter name="Correlativo" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select rd.RazonSocial as RazonSocial, rd.Ruc as Ruc, convert(varchar(15),rd.Fecha,105) as FechaEmi,
+ rd.NroDoc, isnull((select cr.NroComprobReten from NroComprobanteRetencion as cr
+ where cr.Codigo=rd.Codigo and cr.Correlativo=rd.Correlativo),'-') as NroComprobante, 
+ (case rd.TipoMoneda when 'US$' then 
+ (dbo.fn_CantidadEnLetra(cast(rd.Retencion as numeric(10,2)),'SOLES')) else
+ (dbo.fn_CantidadEnLetra(cast(rd.Retencion as numeric(10,2)),'SOLES')) end) as MontoEnLetras, 
+  convert(varchar(15),FechaPago,105) as FechaPago, Direccion as Direccion ,
+ TipoMoneda as Simbolo , TipoCambio as TC
+ from DataRetencionDetalle as rd where rd.Codigo=$P{Codigo} and rd.Correlativo=$P{Correlativo}]]>
+	</queryString>
+	<field name="RUC" class="java.lang.String"/>
+	<field name="RazonSocial" class="java.lang.String"/>
+	<field name="FechaEmi" class="java.lang.String"/>
+	<field name="NroComprobante" class="java.lang.String"/>
+	<field name="MontoEnLetras" class="java.lang.String"/>
+	<field name="FechaPago" class="java.lang.String"/>
+	<field name="Simbolo" class="java.lang.String"/>
+	<field name="TC" class="java.lang.String"/>
+	<field name="Direccion" class="java.lang.String"/>
+	<title>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="32" y="4" width="173" height="36"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Sistema Libros Electronicos\\sant.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="340" y="0" width="215" height="84"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="340" y="11" width="214" height="18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.U.C. 20550226589]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="29" width="214" height="18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPROBANTE DE RETENCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="54" width="15" height="18"/>
+				<textElement>
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="397" width="42" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="513" y="397" width="42" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="32" y="43" width="196" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[SANTANDER CONSUMO PERÚ S.A.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="54" width="301" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[AV. CANAVAL Y MOREYRA 370 PISO 1 SAN ISIDRO, LIMA, LIMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="65" width="97" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[CENTRAL: 519-5600]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="108" width="54" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RAZÓN SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="122" width="54" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="94" width="54" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.U.C.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="32" y="190" width="523" height="1"/>
+			</line>
+			<line>
+				<reportElement x="32" y="240" width="522" height="1"/>
+			</line>
+			<line>
+				<reportElement x="32" y="188" width="1" height="52"/>
+			</line>
+			<line>
+				<reportElement x="554" y="192" width="1" height="48"/>
+			</line>
+			<rectangle>
+				<reportElement x="32" y="173" width="523" height="18" forecolor="#CC0000" backcolor="#FF0000"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="88" y="94" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="108" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="122" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="94" width="74" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE EMISIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="486" y="94" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="486" y="108" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="108" width="74" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPO DE CAMBIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="156" width="251" height="15"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comprobantes que dan origen a retención:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="173" width="37" height="19" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="172" width="102" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERIE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="172" width="112" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° DOCUMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="173" width="74" height="19" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA EMISIÓN]]></text>
+			</staticText>
+			<line>
+				<reportElement x="69" y="191" width="1" height="50"/>
+			</line>
+			<line>
+				<reportElement x="172" y="191" width="1" height="50"/>
+			</line>
+			<line>
+				<reportElement x="286" y="192" width="1" height="48"/>
+			</line>
+			<line>
+				<reportElement x="357" y="191" width="1" height="48"/>
+			</line>
+			<line>
+				<reportElement x="424" y="191" width="1" height="48"/>
+			</line>
+			<line>
+				<reportElement x="489" y="191" width="1" height="48"/>
+			</line>
+			<line>
+				<reportElement x="357" y="264" width="198" height="1"/>
+			</line>
+			<line>
+				<reportElement x="357" y="238" width="1" height="26"/>
+			</line>
+			<line>
+				<reportElement x="424" y="238" width="1" height="26"/>
+			</line>
+			<line>
+				<reportElement x="489" y="238" width="1" height="26"/>
+			</line>
+			<line>
+				<reportElement x="554" y="238" width="1" height="27"/>
+			</line>
+			<staticText>
+				<reportElement x="318" y="246" width="31" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="312" width="211" height="33"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[Autorización SUNAT Nro. E5567497023 P con fecha 10/02/2015 del 0001-0000001 al 0001-0000600]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="269" width="23" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SON: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="487" y="292" width="71" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUNAT]]></text>
+			</staticText>
+			<image>
+				<reportElement x="32" y="422" width="173" height="36"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Sistema Libros Electronicos\\sant.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="468" y="702" width="84" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROL ADM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="461" width="196" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[SANTANDER CONSUMO PERÚ S.A.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="472" width="301" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[AV. CANAVAL Y MOREYRA 370 PISO 1 SAN ISIDRO, LIMA, LIMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="483" width="97" height="11"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[CENTRAL: 519-5600]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="339" y="418" width="215" height="84"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="340" y="429" width="213" height="18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.U.C. 20550226589]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="472" width="15" height="18"/>
+				<textElement>
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="447" width="214" height="18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPROBANTE DE RETENCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="532" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="532" width="74" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPO DE CAMBIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="532" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="518" width="74" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DE EMISIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="518" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="532" width="54" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RAZÓN SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="518" width="54" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.U.C.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="546" width="54" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN]]></text>
+			</staticText>
+			<line>
+				<reportElement x="32" y="607" width="523" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="86" y="546" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="518" width="9" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="32" y="590" width="523" height="18" forecolor="#CC0000" backcolor="#FF0000"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="490" y="590" width="63" height="18" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE RETENIDO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="554" y="655" width="1" height="27"/>
+			</line>
+			<line>
+				<reportElement x="286" y="609" width="1" height="48"/>
+			</line>
+			<staticText>
+				<reportElement x="32" y="590" width="37" height="18" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="573" width="251" height="15"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comprobantes que dan origen a retención:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="688" width="23" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SON: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="590" width="64" height="17" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE OPE. ORIGEN]]></text>
+			</staticText>
+			<line>
+				<reportElement x="489" y="655" width="1" height="26"/>
+			</line>
+			<line>
+				<reportElement x="172" y="608" width="1" height="50"/>
+			</line>
+			<line>
+				<reportElement x="32" y="657" width="522" height="1"/>
+			</line>
+			<line>
+				<reportElement x="424" y="608" width="1" height="48"/>
+			</line>
+			<line>
+				<reportElement x="69" y="609" width="1" height="49"/>
+			</line>
+			<staticText>
+				<reportElement x="430" y="589" width="54" height="18" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE PAGADO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="32" y="608" width="1" height="49"/>
+			</line>
+			<staticText>
+				<reportElement x="318" y="663" width="31" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="357" y="655" width="1" height="26"/>
+			</line>
+			<line>
+				<reportElement x="489" y="609" width="1" height="48"/>
+			</line>
+			<line>
+				<reportElement x="554" y="609" width="1" height="48"/>
+			</line>
+			<line>
+				<reportElement x="424" y="655" width="1" height="26"/>
+			</line>
+			<line>
+				<reportElement x="357" y="681" width="198" height="1"/>
+			</line>
+			<line>
+				<reportElement x="357" y="609" width="1" height="48"/>
+			</line>
+			<textField>
+				<reportElement x="58" y="269" width="366" height="27"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{MontoEnLetras}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="108" width="294" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RazonSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="94" width="118" height="15"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RUC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="413" y="54" width="116" height="18"/>
+				<textElement>
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NroComprobante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="472" width="116" height="18"/>
+				<textElement>
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NroComprobante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="518" width="118" height="15"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RUC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="55" y="688" width="366" height="28"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{MontoEnLetras}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="532" width="294" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RazonSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="197" width="102" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Serie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="197" width="115" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{NDocument}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="197" width="70" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FechaEmision}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="511" y="663" width="36" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Retencion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="663" width="36" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Importe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="499" y="663" width="12" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S/.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="733" width="211" height="33"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[Autorización SUNAT Nro. E5567497023 P con fecha 10/02/2015 del 0001-0000001 al 0001-0000600]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="494" y="94" width="53" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FechaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="518" width="59" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{FechaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="359" y="246" width="17" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Simbolo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="496" y="108" width="51" height="13"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TC}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="495" y="532" width="56" height="13"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="663" width="17" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Simbolo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="663" width="36" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="663" width="17" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Simbolo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="358" y="173" width="66" height="17" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE OPE. ORIGEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="490" y="172" width="63" height="18" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE RETENIDO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="489" y="197" width="65" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Retencion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="511" y="246" width="36" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Retencion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="499" y="246" width="12" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S/.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="425" y="197" width="65" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="246" width="36" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="246" width="17" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Simbolo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="197" width="66" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="246" width="36" height="13"/>
+				<textElement>
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Importe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="614" width="37" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="197" width="37" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="588" width="102" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERIE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="589" width="114" height="20" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° DOCUMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="588" width="74" height="19" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA EMISIÓN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="71" y="614" width="102" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Serie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="614" width="115" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{NDocument}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="614" width="73" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FechaEmision}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="614" width="67" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="614" width="65" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="614" width="65" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Retencion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="546" width="311" height="14"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="122" width="311" height="14"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="431" y="172" width="54" height="18" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE PAGADO]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>
