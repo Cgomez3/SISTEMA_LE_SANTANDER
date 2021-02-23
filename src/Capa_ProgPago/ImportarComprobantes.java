@@ -16,6 +16,7 @@ import Capa_Logica.LProgPagosCabecera;
 import Capa_Logica.SesionUsuario;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.HeadlessException;
 import java.util.List;
@@ -43,7 +44,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListCellRenderer;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
@@ -524,14 +527,27 @@ public class ImportarComprobantes extends javax.swing.JInternalFrame {
                 System.out.println("cuenta bancaria " + listaCuentaBancaria.size());
                 if (listaCuentaBancaria.size() > 0) {
                     proveedoressincuenta = "";
-                    proveedoressincuenta += "<html><body width='500'><h4>Los siguientes documentos se encuentran Programados: </h4>";
+                    proveedoressincuenta += "<html><body width='500'><div style=\"width:500px; height:115px; overflow: scroll;\"><h4>Los siguientes comprobantes se encuentran Pendientes de Programar ó Programados: </h4>";
 
                     for (int i = 0; i < listaCuentaBancaria.size(); i++) {
                         proveedoressincuenta += "<p>- " + listaCuentaBancaria.get(i).getmoneda() + ". " + listaCuentaBancaria.get(i).getnomProveedor() + ". RUC: " + listaCuentaBancaria.get(i).getDocProveedor() + ".<br>";
 
                     }
-                    proveedoressincuenta += "</p></body></html>";
-                    JOptionPane.showMessageDialog(this, proveedoressincuenta);
+                    proveedoressincuenta += "</p></div></body></html>";
+                    
+                    proveedoressincuenta = "";
+                    
+                    for (int i = 0; i < listaCuentaBancaria.size(); i++) {
+                        proveedoressincuenta +=" - " + listaCuentaBancaria.get(i).getmoneda() + ". " + listaCuentaBancaria.get(i).getnomProveedor() + ". RUC: " + listaCuentaBancaria.get(i).getDocProveedor() + " \n";
+
+                    }
+                    
+                    JTextArea jta = new JTextArea(proveedoressincuenta);
+//                    jta.setEnabled(false);
+                    JScrollPane scrollPane=new JScrollPane(jta);
+                    scrollPane.setPreferredSize(new Dimension(600, 300));
+                    
+                    JOptionPane.showMessageDialog(this, scrollPane,"Los siguientes comprobantes se encuentran Pendientes de Programar ó Programados:",JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
 
