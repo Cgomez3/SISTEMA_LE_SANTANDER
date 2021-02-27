@@ -678,8 +678,6 @@ public class ImportarComprobantes extends javax.swing.JInternalFrame {
                                     obj.setUsuCrea(SesionUsuario.misesion.getUsuario());
                                     obj.setTccomprobante(lstcomp.get(q).getTipoComprobante());
                                     obj.setDocProveedor(lstcomp.get(q).getDocProveedor());
-                                    System.out.println("DocProveedor " + lstcomp.get(q).getDocProveedor());
-                                    System.out.println("TipoComprobante " + lstcomp.get(q).getTipoComprobante());
                                     ltc.insertarProgDetalleAutomatico(obj);
                                 }
 

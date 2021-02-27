@@ -65,6 +65,8 @@ public class Exportartxt extends javax.swing.JInternalFrame {
         Date hoy = new Date();
         dcfecha.setDate(hoy);
         txtruta.setText(SesionUsuario.bddatos.getRuta());
+        jLabel2.setVisible(false);
+        txtruta.setVisible(false);
 
     }
 
